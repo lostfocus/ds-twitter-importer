@@ -111,6 +111,12 @@ class DS_Twitter_Parser {
 				
 			}
 
+			$source = json_encode($tweet);
+			$post['postmeta'][] = array(
+				'key' => '_ds_twitter_source',
+				'value' => $source
+			);
+
 			if(count($tweet->entities->user_mentions) > 0){
 				foreach($tweet->entities->user_mentions as $user){
 					$post['terms'][] = array(
